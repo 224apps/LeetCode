@@ -4,6 +4,7 @@ class Solution(object):
         :type str: str
         :rtype: int
         """
+        str = str.strip()
         isNegative = False
         if str and str[0] == '-':
             isNegative = True
