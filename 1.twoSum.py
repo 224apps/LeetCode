@@ -7,7 +7,5 @@ class Solutions:
                 return [i,j]
     
     def main():
-        nums [2,7,11,15]
+        nums [2,7,11,15]  
         twoSum(nums, 9)
-
-
