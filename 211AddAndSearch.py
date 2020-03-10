@@ -24,4 +24,12 @@ class WordDictionary:
         if not word:
             if node.isEndOfWord:
                 self.res = True
+            return 
+        nextChar = word[0]
+        if nextChar == ".":
+            for child in node.children.values():
+                self.dfs(child, word[1:])
+        else:
+            if nextChar in node.children:
+                self.dfs(node.children[nextChar], word[1:])
             
