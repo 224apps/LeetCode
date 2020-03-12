@@ -12,20 +12,6 @@ Input:
 Output: 1->1->2->3->4->4->5->6
 '''
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Definition for singly-linked list.
 
 from heapq import heappush, heappop
