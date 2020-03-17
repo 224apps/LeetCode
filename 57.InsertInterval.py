@@ -11,7 +11,7 @@ Example 2:
 
 Input: intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]], newInterval = [4,8]
 Output: [[1,2],[3,10],[12,16]]
-Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].
+Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10]c.
 NOTE: input types have been changed on April 15, 2019. Please reset to default code definition to get new method signature.
 '''
 
@@ -30,7 +30,7 @@ class Solution(object):
         		result.append(newInterval)
         		newInterval = interval
         	elif newInterval.start <= interval.end or newInterval.end >= interval.start:
-        		newInterval = Interval(min(newInterval.start, interval.start), max(interval.end, newInterval.end))
+        		newInterval = interval(min(newInterval.start, interval.start), max(interval.end, newInterval.end))
 
         result.append(newInterval)
        	return result
