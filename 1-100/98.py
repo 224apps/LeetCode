@@ -36,18 +36,42 @@ Explanation: The root node's value is 5 but its right child's value is 4.
 #         self.right = None
 
 class Solution(object):
-    def isValidBST(self, root,lower = float('-inf'),upper = float('inf') ):
+    def isValidBST(self, root):
         """
         :type root: TreeNode
         :rtype: bool
         """
         if not root:
             return True
-        if root.val <= lower or root.val >= upper:
-            return False
-        return self.isValidBST(root.left, lower,  root.val) and self.isValidBST( root.right,  root.val, upper)
+        stack, result = [], []
+        while stack or root:
+            if root:
+                stack.append(root)
+                root = root.left
+            else:
+                root = stack.pop()
+                result.append(root.val)
+                root = root.right
+        previous = result[0]
+        
+        for index in range(1, len(result)):
+            if previous >= result[index]:
+                return False
+            previous = result[index]
+        return True
 
 
+# Recursive method
 
-
+#class Solution(object):
+#def isValidBST(self, root,lower = float('-inf'),upper = float('inf') ):
+#    """
+#    :type root: TreeNode
+#    :rtype: bool
+#    """
+#    if not root:
+#        return True
+#    if root.val <= lower or root.val >= upper:
+#        return False
+#    return self.isValidBST(root.left, lower,  root.val) and self.isValidBST( root.right,  root.val, upper)
 

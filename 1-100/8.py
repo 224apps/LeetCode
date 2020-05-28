@@ -1,24 +1,25 @@
-def isPalindrome(self, x):
-    if x< 0 or (x % 10 == 0 and x != 0):
-        return false
-    reverseNumber = 0
-    while x > reverseNumber :
-        reverseNumber = reverseNumber * 10 + x % 10
-        x/= 10
-    return x == reverseNumber or x = reverseNumber / 10
-
-
-
-def isPalindrome(n):
-    num = n
-    d = 0
-    rev =0
-    while n > 0 :
-        d = n % 10
-        n = n/10
-        rev = rev * 10 + d
-    if ( num == rev):
-        return True
-    else:
-        return false
-
+class Solution(object):
+    def myAtoi(self, str):
+        """
+        :type str: str
+        :rtype: int
+        """
+        str = str.strip()
+        isNegative = False
+        if str and str[0] == '-':
+            isNegative = True
+        if str and (str[0] == '+' or str[0] == '-'):
+            str = str[1:]
+        if not str:
+            return 0
+        digits = { i for i in '0123456789'}
+        result = 0
+        for char in str:
+            if char not in digits:
+                break
+            result = result * 10 + int(char)
+        if isNegative:
+            result = -result
+            
+        result = max(min(result,2**31 - 1),-2**31)
+        return result

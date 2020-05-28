@@ -1,20 +1,32 @@
+
+'''
+Given a linked list, swap every two adjacent nodes and return its head.
+
+You may not modify the values in the list's nodes, only nodes itself may be changed.
+
+ 
+
+Example:
+
+Given 1->2->3->4, you should return the list as 2->1->4->3.
+
+'''
+#
+#
+## Definition for singly-linked list.
+#class ListNode(object):
+#    def __init__(self, x):
+#        self.val = x
+#        self.next = None
+
 class Solution(object):
-    def searchMatrix(self, matrix, target):
+    def swapPairs(self, head):
         """
-        :type matrix: List[List[int]]
-        :type target: int
-        :rtype: bool
+        :type head: ListNode
+        :rtype: ListNode
         """
-
-        if not matrix:
-        	return 0
-        left, right = 0, len(matrix[0])-1
-
-        while left < len(matrix) and right >= 0:
-        	if matrix[left][right] == target:
-        		return True 
-        	elif matrix[left][right] < target:
-        		left += 1
-        	else:
-        		right -= 1
-        return False
+        curr = head
+        while curr != None and curr.next != None:
+            curr.val, curr.next.val = curr.next.val, curr.val
+            curr = curr.next.next
+        return head
