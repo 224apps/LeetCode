@@ -19,7 +19,8 @@ Then 4 is the first bad version.
 # The isBadVersion API is already defined for you.
 # @param version, an integer
 # @return a bool
-# def isBadVersion(version):
+def isBadVersion(version):
+    pass
 
 class Solution(object):
     def firstBadVersion(self, n):
@@ -27,13 +28,13 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        left = 1
-        right = n
-        while left < right:
-            mid = left + (right - left) // 2
-            if isBadVersion(mid):
-                right = mid
-            else:
-                left = mid + 1
-        return right
+        left, right = 1, n
         
+        while left < right:
+            mid = ( left + right) // 2
+            if isBadVersion(mid):
+              right = mid
+            else:
+              left = mid + 1
+        return right
+
