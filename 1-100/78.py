@@ -18,7 +18,6 @@ Output:
   []
 ]
 '''
-
 class Solution(object):
 
     def solution(self, nums, ans, curr, index):
@@ -42,7 +41,6 @@ class Solution(object):
         curr = []
         self.solution(nums, ans, curr,0)
         return ans
-    
 
 
         
