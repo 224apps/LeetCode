@@ -10,16 +10,20 @@ Note:
 You must do this in-place without making a copy of the array.
 Minimize the total number of operations.
 '''
+
+
 class Solution(object):
     def moveZeroes(self, nums):
         """
         :type nums: List[int]
         :rtype: None Do not return anything, modify nums in-place instead.
         """
-        for i in range(len(nums)):
-            if nums[i] == 0:
-                continue
-            else:
-                return nums
+        zeroIndex = 0
         
-        stack, result =  [nums[0], []]
+        for index in range(len(nums)):
+            if nums[index] != 0:
+                nums[zeroIndex] = nums[index]
+                zeroIndex += 1
+        for index in range(zeroIndex, len(nums)):
+            nums[index] = 0
+        
