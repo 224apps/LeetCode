@@ -30,4 +30,24 @@ class Solution(object):
         		else:
         			result = max(result, index-currIndex+1)
         return result
+
+
+# class Solution(object):
+#     def longestValidParentheses(self, s):
+#         """
+#         :type s: str
+#         :rtype: int
+#         """
+#         q = []
+#         start, ans = 0, 0
+#         for i in range(len(s)):
+#             if s[i] == '(':
+#                 q.append(i)
+#                 continue
+#             if not q: 
+#                 start = i + 1
+#             else:
+#                 q.pop()
+#             ans = max(ans, i - q[-1] if q else i - start + 1)
+#         return ans
             
