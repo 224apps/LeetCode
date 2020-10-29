@@ -23,4 +23,7 @@ class Solution:
         return False
 
 
-print(Solution().)
+arr = [1,2,4,4,4,4]
+m = 1
+k = 3
+print(Solution().containsPattern(arr, m, k))
