@@ -33,24 +33,26 @@ Return 3. The paths that sum to 8 are:
 #         self.right = right
 class Solution:
     def pathSum(self, root: TreeNode, sum: int) -> int:
-        count = 0
         
-        def dfs(node, currSum):
-            nonlocal count
-            if node is None:
+        def dfs(node, running_sum):
+            nonlocal result
+            if not node:
                 return
-            if currSum + node.val == sum:
-                count += 1
-            dfs(node.left, currSum + node.val)
-            dfs(node.right, currSum + node.val)
-        
-        
-        def starter_dfs(node):
-            if node is None:
-                return
-            dfs(node,0)
-            starter_dfs(node.left)
-            starter_dfs(node.right)
             
-        starter_dfs(root)
-        return count
+            running_sum += node.val
+            
+            if running_sum - sum in sum_count:
+                result += sum_count[running_sum -sum]
+                
+            sum_count[running_sum] += 1
+            
+            dfs(node.left, running_sum)
+            dfs(node.right, running_sum)
+            
+            sum_count[running_sum] -= 1
+        
+        result = 0
+        sum_count = collections.defaultdict(int)
+        sum_count[0] = 1
+        dfs(root, 0)
+        return result
